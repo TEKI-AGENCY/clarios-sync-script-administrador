@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: clarios-sync-db
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./data:/var/lib/mysql
