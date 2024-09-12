@@ -17,7 +17,7 @@ const main = async () => {
             const missingBatteriesReferences = [];
 
             console.log( "Truncate admin tables" );
-            await tx.catalog_vehicle.deleteMany();
+            await tx.catalog_mac_vehicle.deleteMany();
             await tx.mac_vehicles.deleteMany();
 
             console.log( "Load CSV admin vehicles from admin-vehicles.csv" );
@@ -69,10 +69,10 @@ const main = async () => {
                         continue;
                     }
 
-                    await tx.catalog_vehicle.create( {
+                    await tx.catalog_mac_vehicle.create( {
                         data: {
                             catalog_id: catalog.id,
-                            vehicle_id: adminVehicleDB.id,
+                            mac_vehicle_id: adminVehicleDB.id,
                             priority: vehicleEntity.batteries.indexOf( battery ) + 1,
                             recommended: vehicleEntity.batteries[ 0 ] === battery,
                             created_at: new Date(),
